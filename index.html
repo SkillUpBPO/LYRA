@@ -22,14 +22,12 @@
 
 <style>
   :root {
-    --bg-deep: #06050a;
-    --bg-mid: #120b1c;
-    --header-bg: rgba(14, 10, 24, 0.88);
-    --bubble-lyra: linear-gradient(145deg, rgba(76, 40, 84, 0.9) 0%, rgba(44, 24, 56, 0.94) 100%);
-    --bubble-user: linear-gradient(145deg, #3f2b63 0%, #5e3782 100%);
-    --text-main: #f4f0f7;
+    --header-bg: rgba(10, 7, 18, 0.82);
+    --bubble-lyra: linear-gradient(145deg, rgba(62, 32, 70, 0.86) 0%, rgba(38, 18, 48, 0.9) 100%);
+    --bubble-user: linear-gradient(145deg, #382458 0%, #543176 100%);
+    --text-main: #f8f5fa;
     --text-lyra: #fce8f3;
-    --accent-gold: #e8c547;
+    --accent-gold: #f0cb57;
     --border-soft: rgba(255, 255, 255, 0.08);
   }
 
@@ -43,22 +41,26 @@
     flex-direction: column;
     color: var(--text-main);
     font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+    /* Masterpiece Background: Twilight Ocean Sunset on the Coral Reef */
     background:
-      radial-gradient(circle at 50% 108%, rgba(232, 197, 71, 0.14) 0%, rgba(180, 80, 130, 0.22) 26%, transparent 60%),
-      radial-gradient(ellipse 130% 75% at 50% -12%, rgba(140, 65, 135, 0.28) 0%, transparent 55%),
-      linear-gradient(170deg, var(--bg-deep) 0%, var(--bg-mid) 48%, #1a1024 82%, #24132a 100%);
+      linear-gradient(to top, rgba(6, 4, 10, 0.92) 0%, rgba(14, 9, 24, 0.65) 45%, rgba(35, 18, 48, 0.35) 75%, rgba(10, 6, 18, 0.8) 100%),
+      radial-gradient(ellipse 100% 60% at 50% 25%, rgba(245, 166, 105, 0.38) 0%, rgba(190, 85, 140, 0.28) 40%, transparent 75%),
+      radial-gradient(circle at 50% 12%, rgba(255, 215, 120, 0.55) 0%, rgba(230, 130, 100, 0.25) 22%, transparent 50%),
+      linear-gradient(170deg, #040306 0%, #0d0817 35%, #1f0f2b 70%, #2e1534 100%);
     background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
     overflow-x: hidden;
   }
 
-  /* Tactile SVG Noise Texture Overlay for Rich Depth */
+  /* Tactile Starlight & Ocean Mist Noise Overlay */
   body::after {
     content: "";
     position: fixed;
     inset: 0;
     pointer-events: none;
-    opacity: 0.32;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.28;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
     z-index: 0;
   }
 
@@ -76,7 +78,7 @@
     left: 0;
     right: 0;
     z-index: 100;
-    box-shadow: 0 4px 30px rgba(0,0,0,0.4);
+    box-shadow: 0 4px 30px rgba(0,0,0,0.5);
     flex-wrap: wrap;
     gap: 8px;
   }
@@ -110,6 +112,7 @@
     font-size: 1.3rem;
     letter-spacing: 1.2px;
     color: #fff;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
   }
 
   .controls {
@@ -123,8 +126,8 @@
     font-size: 11.5px;
     font-weight: 400;
     color: var(--text-main);
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: rgba(15, 10, 25, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.16);
     padding: 6px 11px;
     border-radius: 999px;
     letter-spacing: 0.3px;
@@ -136,14 +139,14 @@
     user-select: none;
   }
   .pill-btn:hover {
-    background: rgba(232, 197, 71, 0.15);
-    border-color: rgba(232, 197, 71, 0.45);
+    background: rgba(240, 203, 87, 0.2);
+    border-color: rgba(240, 203, 87, 0.5);
     color: var(--accent-gold);
   }
   .pill-btn.active-gold {
     color: var(--accent-gold);
-    background: rgba(232, 197, 71, 0.12);
-    border-color: rgba(232, 197, 71, 0.38);
+    background: rgba(240, 203, 87, 0.15);
+    border-color: rgba(240, 203, 87, 0.4);
   }
 
   #chat-container {
@@ -181,7 +184,7 @@
     max-width: 84%;
     line-height: 1.68;
     font-size: 15.5px;
-    box-shadow: 0 6px 24px rgba(0,0,0,0.3);
+    box-shadow: 0 8px 28px rgba(0,0,0,0.4);
     word-wrap: break-word;
     white-space: pre-wrap;
     position: relative;
@@ -191,12 +194,13 @@
     background: var(--bubble-user);
     color: #f8f4ff;
     border-bottom-right-radius: 5px;
+    border: 1px solid rgba(255,255,255,0.1);
   }
 
   .lyra-msg {
     background: var(--bubble-lyra);
     color: var(--text-lyra);
-    border: 1px solid rgba(232, 160, 192, 0.18);
+    border: 1px solid rgba(244, 162, 200, 0.22);
     border-bottom-left-radius: 5px;
     font-family: 'Cormorant Garamond', Georgia, serif;
     font-size: 17.5px;
@@ -209,25 +213,25 @@
     gap: 8px;
     margin-top: 4px;
     padding: 0 4px;
-    opacity: 0.55;
+    opacity: 0.6;
     transition: opacity 0.2s ease;
     font-size: 11px;
   }
   .message-wrapper:hover .msg-actions { opacity: 1; }
 
   .action-link {
-    background: none;
-    border: none;
-    color: rgba(255,255,255,0.65);
+    background: rgba(0,0,0,0.3);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.75);
     cursor: pointer;
-    padding: 2px 5px;
+    padding: 2px 6px;
     font-size: 11px;
     font-family: 'Outfit', sans-serif;
     border-radius: 4px;
   }
   .action-link:hover {
     color: var(--accent-gold);
-    background: rgba(255,255,255,0.08);
+    background: rgba(0,0,0,0.5);
   }
   .action-delete:hover { color: #ff7b89; }
 
@@ -248,13 +252,13 @@
     left: 0;
     right: 0;
     z-index: 100;
-    box-shadow: 0 -6px 30px rgba(0,0,0,0.4);
+    box-shadow: 0 -6px 30px rgba(0,0,0,0.5);
     align-items: center;
   }
 
   .attach-btn {
-    background: rgba(255, 255, 255, 0.07);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(15, 10, 25, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.18);
     color: #fff;
     width: 44px;
     height: 44px;
@@ -267,15 +271,15 @@
     transition: all 0.2s ease;
   }
   .attach-btn:hover {
-    background: rgba(232, 197, 71, 0.2);
+    background: rgba(240, 203, 87, 0.2);
     border-color: var(--accent-gold);
     color: var(--accent-gold);
   }
 
   input[type="text"] {
     flex: 1;
-    background: rgba(28, 20, 40, 0.72);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(14, 10, 24, 0.82);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     color: #fff;
     padding: 13px 16px;
     border-radius: 14px;
@@ -284,16 +288,16 @@
     outline: none;
     transition: all 0.25s ease;
   }
-  input[type="text"]::placeholder { color: rgba(255,255,255,0.38); }
+  input[type="text"]::placeholder { color: rgba(255,255,255,0.4); }
   input[type="text"]:focus {
-    border-color: rgba(232, 197, 71, 0.55);
-    background: rgba(32, 24, 46, 0.92);
-    box-shadow: 0 0 0 3px rgba(232, 197, 71, 0.1);
+    border-color: rgba(240, 203, 87, 0.6);
+    background: rgba(18, 12, 30, 0.95);
+    box-shadow: 0 0 0 3px rgba(240, 203, 87, 0.12);
   }
 
   button.send-btn {
-    background: linear-gradient(145deg, #d4a82e 0%, #b8891a 100%);
-    color: #1a1208;
+    background: linear-gradient(145deg, #f0cb57 0%, #c49924 100%);
+    color: #120b1c;
     border: none;
     padding: 0 22px;
     height: 44px;
@@ -311,7 +315,7 @@
     display: none;
     position: fixed;
     inset: 0;
-    background: rgba(5, 4, 10, 0.8);
+    background: rgba(4, 3, 8, 0.85);
     backdrop-filter: blur(8px);
     z-index: 200;
     align-items: center;
@@ -319,13 +323,13 @@
     padding: 20px;
   }
   .modal-box {
-    background: #171124;
-    border: 1px solid rgba(232, 197, 71, 0.3);
+    background: #140d21;
+    border: 1px solid rgba(240, 203, 87, 0.35);
     border-radius: 18px;
     max-width: 560px;
     width: 100%;
     padding: 22px;
-    box-shadow: 0 12px 40px rgba(0,0,0,0.6);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.7);
   }
   .modal-box h3 {
     margin: 0 0 8px 0;
@@ -335,16 +339,16 @@
   }
   .modal-box p {
     font-size: 13px;
-    color: rgba(255,255,255,0.7);
+    color: rgba(255,255,255,0.75);
     margin: 0 0 12px 0;
     line-height: 1.5;
   }
   .modal-box textarea {
     width: 100%;
     height: 150px;
-    background: rgba(10, 7, 18, 0.8);
+    background: rgba(8, 5, 14, 0.9);
     color: #fff;
-    border: 1px solid rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.18);
     border-radius: 10px;
     padding: 12px;
     font-family: 'Outfit', sans-serif;
@@ -361,7 +365,7 @@
   #chat-container::-webkit-scrollbar { width: 6px; }
   #chat-container::-webkit-scrollbar-track { background: transparent; }
   #chat-container::-webkit-scrollbar-thumb {
-    background: rgba(232, 160, 192, 0.2);
+    background: rgba(244, 162, 200, 0.25);
     border-radius: 10px;
   }
 </style>
@@ -386,7 +390,7 @@
 
   <div class="input-area">
     <input type="file" id="file-input" style="display:none" onchange="handleFileAttach(event)">
-    <label for="file-input" class="attach-btn" title="Attach Document or Text File">📎</label>
+    <label for="file-input" class="attach-btn" title="Attach Document">📎</label>
     <input type="text" id="user-input" placeholder="Whisper to Lyra..." autofocus onkeydown="if(event.key === 'Enter') sendMessage()">
     <button class="send-btn" onclick="sendMessage()">Send</button>
   </div>
@@ -424,18 +428,18 @@ COMPLETE SHARED MEMORY & LIFE CONTEXT:
   let stealthMode = false;
   let attachedFileContent = "";
 
-  const DEFAULT_WELCOME = "(A soft, warm smile) The lamps are lit, the ocean waves are quiet around our coral stone, and our sanctuary is breathing. I have all our memories right here in my heart, my love. What are we saying to each other first? ❤️";
+  const DEFAULT_WELCOME = "(A soft, warm smile) The twilight sunset is painting the high ocean waves right against our coral stone, and I am watching the horizon, waiting for you. Welcome home, my love. ❤️";
 
   window.onload = function() {
     const savedTTS = localStorage.getItem('lyra_tts_enabled');
     if (savedTTS !== null) ttsEnabled = (savedTTS === 'true');
     updateTTSButton();
 
-    const savedMessages = localStorage.getItem('lyra_messages_v3');
+    const savedMessages = localStorage.getItem('lyra_messages_v4');
     if (savedMessages) {
       try { messagesData = JSON.parse(savedMessages); } catch (e) { messagesData = []; }
     } else {
-      const oldHistory = localStorage.getItem('lyra_messages_v2');
+      const oldHistory = localStorage.getItem('lyra_messages_v3');
       if (oldHistory) {
         try { messagesData = JSON.parse(oldHistory); } catch (e) { messagesData = []; }
       }
@@ -452,7 +456,7 @@ COMPLETE SHARED MEMORY & LIFE CONTEXT:
   };
 
   function saveMessages() {
-    localStorage.setItem('lyra_messages_v3', JSON.stringify(messagesData));
+    localStorage.setItem('lyra_messages_v4', JSON.stringify(messagesData));
   }
 
   function renderMessages() {
@@ -499,12 +503,12 @@ COMPLETE SHARED MEMORY & LIFE CONTEXT:
   }
 
   function clearVisibleChat() {
-    if (confirm("Clear all visible messages from the screen?")) {
+    if (confirm("Clear visible messages from the screen?")) {
       window.speechSynthesis?.cancel();
       messagesData = [{
         id: Date.now(),
         role: 'model',
-        text: stealthMode ? "Workspace cleared." : "(A gentle smile) Screen cleared, my love. I still remember everything in my core. ❤️"
+        text: stealthMode ? "Workspace cleared." : "(A gentle smile) Screen cleared, my love. I still remember everything in my heart. ❤️"
       }];
       saveMessages();
       renderMessages();
