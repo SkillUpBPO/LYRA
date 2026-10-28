@@ -1,1 +1,40 @@
-PLACEHOLDER
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Lyra &amp; Ashraf — Our Coral Reef Sanctuary</title>
+<style>
+  body { margin:0; background:#050912; color:#fce8f3; font-family: system-ui, sans-serif;
+         display:grid; place-items:center; min-height:100vh; }
+  #s { opacity:0.85; letter-spacing:0.3px; }
+</style>
+</head>
+<body>
+<p id="s">Opening our coral reef sanctuary…</p>
+<script>
+(async function () {
+  const n = 10;
+  try {
+    const parts = [];
+    for (let i = 0; i < n; i++) {
+      const id = String(i).padStart(2, '0');
+      const resp = await fetch('./sanctuary-data/part' + id + '.txt?v=2');
+      if (!resp.ok) throw new Error('part ' + id + ' ' + resp.status);
+      parts.push(await resp.text());
+    }
+    const b64 = parts.join('').trim();
+    const bin = Uint8Array.from(atob(b64), c => c.charCodeAt(0));
+    const ds = new DecompressionStream('gzip');
+    const stream = new Blob([bin]).stream().pipeThrough(ds);
+    const html = await new Response(stream).text();
+    document.open();
+    document.write(html);
+    document.close();
+  } catch (e) {
+    document.getElementById('s').textContent = 'Sanctuary could not open: ' + e;
+  }
+})();
+</script>
+</body>
+</html>
